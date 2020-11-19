@@ -12,6 +12,35 @@ class Bubble {
     private float speedY;
     private float speedX;
 
+
+   public Bubble(Sketch sketch){
+      s= sketch ;
+      diameter = s.random(170,170); 
+      x = s.random(diameter/2, s.width - diameter/2);
+      y = s.random(diameter / 2, s.height - diameter / 2);
+      col = s.color(255, 150);
+      speedY = s.random(-2,-4);
+      speedX = s.random(-2,-4);
+
+    }
+
+   public Bubble(Sketch sketch, float ballDiam, int border, float ballSpeedX, float ballSpeedY){
+     s = sketch;
+     diameter = ballDiam;
+     x = s.random(diameter/2, s.width - diameter/2);
+     y = s.random(diameter / 2, s.height - diameter / 2);
+     col = s.color(100, 100);
+     borderColor = border;
+     speedX = ballSpeedX;
+     speedY = ballSpeedY;
+
+
+   }
+
+    
+    
+
+    
     /**
      * SUMMATIVE REQUIRED Add two constructors for the Bubble class, one that is
      * mostly default and one that allows custom values for whichever you want to be
@@ -28,13 +57,18 @@ class Bubble {
      * SUMMATIVE OPTIONAL Add more than two constructors for varying levels of
      * customization
      */
+     //
+    
 
-    /*
-     * SUMMATIVE REQUIRED Add a method called `getRadius()` that returns a float
-     * representing the radius of the bubble
-     */
+    
+     public float getRadius(){
+       return diameter /2;
+       }
 
-    /** Draws the bubble. */
+
+
+
+    
     public void drawBubble() {
         s.stroke(borderColor);
         s.fill(col);

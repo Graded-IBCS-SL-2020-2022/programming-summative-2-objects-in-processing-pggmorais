@@ -1,41 +1,62 @@
 
 /** MAKE SURE TO READ THE README CAREFULLY BEFORE YOU BEGIN EDITING THIS CODE */
+//hi
 import processing.core.PApplet;
 
 public class Sketch extends PApplet {
 
-    /*
-     * SUMMATIVE REQUIRED Declare at least four balls, four bubbles, and four
-     * snowflakes as instance variables. I have made the first ball for you.
-     * 
-     * SUMMATIVE OPTIONAL Use *arrays* to store the elements, rather than individual
-     * variables.
-     */
-
-    Ball b1;
+    
+    Ball[] balls;
+    Bubble[] bubbles;
+    Snowflake[] snowflakes;
+    
 
     public void settings() {
         size(500, 500);
     }
 
-    /*
-     * SUMMATIVE REQUIRED Initialize the balls, bubbles, and snowflakes using your
-     * constructors inside of setup(). You must use a non-default-constructor at
-     * least once and a default constructor at least once for each type.
-     * 
-     * I have done the first ball for you.
-     */
+    
     public void setup() {
         frameRate(30);
-        b1 = new Ball(this);
+        balls = new Ball[]{new Ball(this), new Ball(this, 150,7,7), new Ball(this), new Ball(this)};
+
+        bubbles = new Bubble[]{new Bubble(this,170,255,-3,-3),new Bubble(this,170,255,-4,-4),new Bubble(this,170,255,-4,-4),new Bubble(this,170,255,-3,-3)};
+
+        snowflakes = new Snowflake[]{new Snowflake(this), new Snowflake(this), new Snowflake(this),new Snowflake(this)};
     }
 
     public void draw() {
         background(100);
 
-        /* SUMMATIVE REQUIRED Draw and move all balls, snowflakes, and bubbles */
-        b1.drawBall();
-        b1.moveBall();
+        balls[0].drawBall();
+        balls[0].moveBall();
+        balls[1].drawBall();
+        balls[1].moveBall();
+        balls[2].drawBall();
+        balls[2].moveBall();
+        balls[3].drawBall();
+        balls[3].moveBall();
+
+        bubbles[0].drawBubble();
+        bubbles[0].moveBubble();
+        bubbles[1].drawBubble();
+        bubbles[1].moveBubble();
+        bubbles[2].drawBubble();
+        bubbles[2].moveBubble();
+        bubbles[3].drawBubble();
+        bubbles[3].moveBubble();
+        
+        snowflakes[0].drawSnowflake();
+        snowflakes[0].moveSnowflake();
+        snowflakes[1].drawSnowflake();
+        snowflakes[1].moveSnowflake();
+        snowflakes[2].drawSnowflake();
+        snowflakes[2].moveSnowflake();
+        snowflakes[3].drawSnowflake();
+        snowflakes[3].moveSnowflake();
+
+
+        
     }
 
     /**
@@ -51,6 +72,11 @@ public class Sketch extends PApplet {
             alpha = 255;
         }
         return color(random(0, 255), random(0, 255), random(0, 255), alpha);
+    }
+    
+
+    public void mousePressed(){
+      balls[1].stop();
     }
 
     /*
