@@ -1,4 +1,5 @@
 /** MAKE SURE TO READ THE README CAREFULLY BEFORE YOU BEGIN EDITING THIS CODE */
+
 class Ball {
     private Sketch s;
     private float diameter;
@@ -8,36 +9,52 @@ class Ball {
     private float speedY;
     private float speedX;
 
-    /**
-     * The default constructor generates random values for most of the instance
-     * variables.
-     */
+
     public Ball(Sketch sketch) {
         s = sketch;
-        diameter = s.random(50, 150); // random diameter between 50 and 150
+        diameter = s.random(120,130); 
         x = s.random(diameter / 2, s.width - diameter / 2);
         y = s.random(diameter / 2, s.height - diameter / 2);
+        col = s.randomColor(false);
+        speedY = s.random(7,10);
+        speedX = s.random(7,10);
 
-        /*
-         * SUMMATIVE REQUIRED use the randomColor() method in the sketch to set default
-         * balls to a solid random color
-         */
+      }  
+       
+    public Ball (Sketch sketch, float ballDiam, float ballSpeedX, float ballSpeedY){
+      
+      s = sketch;
+      diameter = ballDiam;
+      x = s.random(diameter / 2, s.width - diameter / 2);
+      y = s.random(diameter / 2, s.height - diameter / 2);
+      col = s.randomColor(false);
+      speedX = ballSpeedX;
+      speedY = ballSpeedY;
 
-        /*
-         * SUMMATIVE REQUIRED Set speedX and speedY to reasonable defaults. Random
-         * numbers could be nice, but are not required.
-         */
     }
+  
 
-    /** This constructor lets you specify all of the ball instance variables */
-    public Ball(Sketch s, float X, float Y, float ballDiam, int ballColor, float sx, float sy) {
-        /* SUMMATIVE REQUIRED Fill out this constructor */
-    }
+        
+      
+      
+    public float getRadius(){
+      return diameter / 2;
+    
+      }
 
-    /*
-     * SUMMATIVE REQUIRED Add a method called `getRadius()` that returns a float
-     * representing the radius of the ball
-     */
+
+   
+   public void stop(){
+     speedX = 0;
+     speedY = 0;
+
+   }
+
+   public void start(){
+     speedX = s.random(7,8);
+     speedY = s.random(7,8);
+   }
+
 
     /*
      * SUMMATIVE OPTIONAL Add a method called `stop()` that sets the ball speed to
@@ -70,7 +87,7 @@ class Ball {
         if (y > (s.height - getRadius()) || y < getRadius()) {
             speedY = -speedY;
         }
-        /* Add the speed in both directions to move the ball */
+       
         x += speedX;
         y += speedY;
     }
